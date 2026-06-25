@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prosper Nnodim's project portfolio - web apps, tools, and creative coding experiments.">
+  <title>Prosper Nnodim | Projects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span>trixon</span>.dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Projects</h1>
+    <p>A collection of things I've built &mdash; from web apps to creative experiments.</p>
+    <div class="section-divider"></div>
+  </header>
+
+  <section class="section fade-in" id="projectsList">
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/project1.png" alt="ShopEase Dashboard screenshot">
+        </div>
+        <div class="project-info">
+          <h3>ShopEase Dashboard</h3>
+          <p>A responsive e-commerce dashboard with product management, sales analytics, and inventory tracking built with vanilla web technologies.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener">Live Demo &rarr;</a>
+            <a href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/project2.png" alt="WeatherNow App screenshot">
+        </div>
+        <div class="project-info">
+          <h3>WeatherNow App</h3>
+          <p>A weather forecast application displaying current conditions, temperature trends, and a 5-day outlook with dynamic icons and data visualization.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener">Live Demo &rarr;</a>
+            <a href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-image">
+          <img src="images/project3.png" alt="TaskFlow App screenshot">
+        </div>
+        <div class="project-info">
+          <h3>TaskFlow Productivity</h3>
+          <p>An interactive task management app with priority categorization, progress tracking, and localStorage persistence for offline use.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener">Live Demo &rarr;</a>
+            <a href="#" target="_blank" rel="noopener">Source Code</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section fade-in" id="projectSummary">
+    <div class="section-header">
+      <p class="section-label">Overview</p>
+      <h2 class="section-title">Summary</h2>
+    </div>
+    <div class="table-container" style="max-width:700px;margin:0 auto;">
+      <table class="info-table">
+        <thead><tr><th>Project</th><th>Stack</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>ShopEase Dashboard</td><td>HTML, CSS, JS</td><td><span class="tag" style="background:rgba(62,207,142,0.1);color:var(--success);">Done</span></td></tr>
+          <tr><td>WeatherNow App</td><td>HTML, CSS, JS, API</td><td><span class="tag" style="background:rgba(62,207,142,0.1);color:var(--success);">Done</span></td></tr>
+          <tr><td>TaskFlow App</td><td>HTML, CSS, JS</td><td><span class="tag" style="background:rgba(245,166,35,0.1);color:var(--warning);">In Progress</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2026 Prosper Nnodim. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="planner.html">Planner</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

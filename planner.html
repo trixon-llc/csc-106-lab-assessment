@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive academic planner - add, complete, and delete tasks to stay organized.">
+  <title>Prosper Nnodim | Academic Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span>trixon</span>.dev</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="planner.html" class="active">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Academic Planner</h1>
+    <p>Stay organized. Add, track, and manage your academic tasks.</p>
+    <div class="section-divider"></div>
+  </header>
+
+  <section class="section" id="plannerSection">
+    <div class="planner-container">
+      <div class="task-input-group" id="taskInputGroup">
+        <input type="text" id="taskInput" placeholder="What needs to be done?" aria-label="Task description">
+        <select id="taskPriority" aria-label="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button class="btn btn-primary" id="addTaskBtn" type="button">Add Task</button>
+      </div>
+      <div class="task-stats" id="taskStats">
+        <div class="stat-card">
+          <div class="stat-number" id="totalTasks">0</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="completedTasks">0</div>
+          <div class="stat-label">Done</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="pendingTasks">0</div>
+          <div class="stat-label">Pending</div>
+        </div>
+      </div>
+      <div class="task-filters" id="taskFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="high">High Priority</button>
+      </div>
+      <div class="task-list" id="taskList">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">&#128203;</div>
+          <p>No tasks yet. Add your first task above.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:2rem;text-align:center;">
+        <h3 style="font-size:0.9rem;margin-bottom:0.75rem;justify-content:center;">Focus Soundtrack</h3>
+        <audio controls style="width:100%;max-width:320px;margin:0 auto;filter:invert(1) hue-rotate(180deg);">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <p style="color:var(--text-3);font-size:0.75rem;margin-top:0.5rem;">Ambient track to help you focus while working.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2026 Prosper Nnodim. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="planner.html">Planner</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
