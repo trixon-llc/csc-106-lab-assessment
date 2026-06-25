@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC 106 - Lab Assessment Submission</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            color: #1a1a2e;
+            background: #fff;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        /* ── Header Banner ── */
+        .header {
+            background: linear-gradient(135deg, #0f2b46 0%, #1a3a5c 60%, #10b981 100%);
+            color: white;
+            padding: 28px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 160px;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 50%, #10b981 50%);
+        }
+
+        .header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        .header .university {
+            position: absolute;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
+            text-align: right;
+            z-index: 1;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .header .university span {
+            display: block;
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* ── Main Content ── */
+        .content {
+            padding: 28px 40px 20px;
+        }
+
+        /* ── Student Info Section ── */
+        .student-info {
+            border: 1px solid #d0d5dd;
+            border-radius: 4px;
+            padding: 16px 22px;
+            margin-bottom: 24px;
+        }
+
+        .student-info h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #0f2b46;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1.5px solid #0f2b46;
+            display: inline-block;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 36px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 6px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            font-size: 12px;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .info-value {
+            font-size: 12px;
+            color: #1a1a2e;
+            border-bottom: 1px dashed #bbb;
+            flex: 1;
+            padding-bottom: 1px;
+            outline: none;
+            min-width: 60px;
+        }
+
+        /* ── Question Sections ── */
+        .question {
+            margin-bottom: 24px;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .question-number {
+            background: #0f2b46;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .question-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f2b46;
+        }
+
+        .question-description {
+            font-size: 12.5px;
+            color: #444;
+            margin-bottom: 10px;
+            padding-left: 36px;
+            font-style: italic;
+        }
+
+        /* ── Code Block ── */
+        .code-block {
+            background: #0f0f15;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .code-block-header {
+            background: #1b1b24;
+            padding: 5px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .code-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red { background: #ff5f56; }
+        .code-dot.yellow { background: #ffbd2e; }
+        .code-dot.green { background: #27ca40; }
+
+        .code-filename {
+            color: #999;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            margin-left: 6px;
+        }
+
+        .code-block pre {
+            padding: 12px 14px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9.5px;
+            line-height: 1.5;
+            color: #e2e8f0;
+            white-space: pre;
+            margin: 0;
+        }
+
+        /* ── Explanation Section ── */
+        .explanation {
+            background: #f4f7fb;
+            border-left: 3px solid #0f2b46;
+            padding: 10px 14px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 8px;
+        }
+
+        .explanation h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0f2b46;
+            margin-bottom: 4px;
+        }
+
+        .explanation ul {
+            padding-left: 16px;
+            font-size: 11.5px;
+            color: #333;
+        }
+
+        .explanation li {
+            margin-bottom: 2px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 10px;
+            color: #999;
+            border-top: 1px solid #eee;
+            margin-top: 12px;
+        }
+
+        /* ── Print Styles ── */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm 10mm;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .header {
+                padding: 22px 30px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .content {
+                padding: 20px 10px 10px;
+            }
+
+            .code-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .explanation {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <div class="header">
+        <h1>Lab Assessment</h1>
+        <h2>CSC 106 &mdash; Introduction to Web Technologies</h2>
+        <div class="university">
+            MIVA
+            <span>Open University</span>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Student Information -->
+        <div class="student-info">
+            <h3>Student Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Full Name:</span>
+                    <span class="info-value">Nnodim Prosper</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Matric No:</span>
+                    <span class="info-value">2025/B/CSC/0577</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">realtrixon@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Department:</span>
+                    <span class="info-value">Computer Science</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Live Link:</span>
+                    <span class="info-value"><a href="https://trixon-llc.github.io/csc-106-lab-assessment" target="_blank">trixon-llc.github.io/csc-106-lab-assessment</a></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">GitHub Repo:</span>
+                    <span class="info-value"><a href="https://github.com/trixon-llc/csc-106-lab-assessment" target="_blank">github.com/trixon-llc/csc-106-lab-assessment</a></span>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- FILE 1: index.html -->
+        <div class="question" >
+            <div class="question-header">
+                <div class="question-number">1</div>
+                <div class="question-title">index.html</div>
+            </div>
+            <p class="question-description">
+                Homepage showing profile introduction, photo, skills grid, and links.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">index.html</span>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Nnodim Prosper - Computer Science student portfolio showcasing skills, projects, and achievements.&quot;&gt;
+  &lt;title&gt;Prosper Nnodim | Portfolio&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class=&quot;navbar&quot; id=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;nav-container&quot;&gt;
+      &lt;a href=&quot;index.html&quot; class=&quot;nav-logo&quot;&gt;&lt;span&gt;trixon&lt;/span&gt;.dev&lt;/a&gt;
+      &lt;ul class=&quot;nav-links&quot; id=&quot;navLinks&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;hamburger&quot; id=&quot;hamburger&quot; aria-label=&quot;Toggle menu&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;section class=&quot;hero&quot; id=&quot;hero&quot;&gt;
+    &lt;div class=&quot;hero-content&quot;&gt;
+      &lt;div class=&quot;hero-text&quot;&gt;
+        &lt;p class=&quot;hero-greeting&quot;&gt;Hi, I&#039;m&lt;/p&gt;
+        &lt;h1 class=&quot;hero-name&quot;&gt;Prosper Nnodim&lt;/h1&gt;
+        &lt;h2 class=&quot;hero-title&quot;&gt;Computer Science Student&lt;/h2&gt;
+        &lt;p class=&quot;hero-bio&quot;&gt;
+          A passionate tech enthusiast and Computer Science student based in Lagos, Nigeria. 
+          I build things for the web and love exploring how technology can solve real-world problems.
+          Welcome to my portfolio.
+        &lt;/p&gt;
+        &lt;div class=&quot;hero-buttons&quot;&gt;
+          &lt;a href=&quot;projects.html&quot; class=&quot;btn btn-primary&quot;&gt;View Projects&lt;/a&gt;
+          &lt;a href=&quot;contact.html&quot; class=&quot;btn btn-outline&quot;&gt;Contact Me&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;hero-image&quot;&gt;
+        &lt;img src=&quot;images/student-photo.png&quot; alt=&quot;Prosper Nnodim photograph&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;quickAbout&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Introduction&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;A Bit About Me&lt;/h2&gt;
+      &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;max-width:640px;margin:0 auto;text-align:center;&quot;&gt;
+      &lt;p style=&quot;color:var(--text-2);font-size:0.95rem;margin-bottom:1.25rem;&quot;&gt;
+        I&#039;m a first-year Computer Science student at MIVA Open University, also studying Computer Systems 
+        Networking at Saylor University. I&#039;m interested in full-stack development, mobile apps, 
+        and building solutions that make an impact.
+      &lt;/p&gt;
+      &lt;a href=&quot;about.html&quot; class=&quot;btn btn-outline&quot;&gt;Learn More &amp;rarr;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;featuredSkills&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Skills&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;What I Work With&lt;/h2&gt;
+      &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;skills-grid&quot;&gt;
+      &lt;div class=&quot;skill-card&quot;&gt;
+        &lt;h3&gt;Frontend&lt;/h3&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;HTML &amp;amp; CSS&lt;/span&gt;&lt;span&gt;85%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;85&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;JavaScript&lt;/span&gt;&lt;span&gt;75%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;75&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;React.js / Next.js&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;70&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;skill-card&quot;&gt;
+        &lt;h3&gt;Backend &amp;amp; Data&lt;/h3&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Node.js&lt;/span&gt;&lt;span&gt;72%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;72&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Python&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;70&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;SQL / MongoDB&lt;/span&gt;&lt;span&gt;68%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;68&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;skill-card&quot;&gt;
+        &lt;h3&gt;Mobile &amp;amp; Other&lt;/h3&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Flutter&lt;/span&gt;&lt;span&gt;65%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;65&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;React Native&lt;/span&gt;&lt;span&gt;62%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;62&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;TypeScript&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;70&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-content&quot;&gt;
+      &lt;p class=&quot;footer-text&quot;&gt;&amp;copy; 2026 Prosper Nnodim. All rights reserved.&lt;/p&gt;
+      &lt;div class=&quot;footer-links&quot;&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+        &lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;
+        &lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;
+        &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 2: about.html -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">2</div>
+                <div class="question-title">about.html</div>
+            </div>
+            <p class="question-description">
+                About Page detailing academic history, career aspirations, technical skills, and hobbies.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">about.html</span>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;About Prosper Nnodim - educational background, career aspirations, technical skills, and interests.&quot;&gt;
+  &lt;title&gt;Prosper Nnodim | About Me&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class=&quot;navbar&quot; id=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;nav-container&quot;&gt;
+      &lt;a href=&quot;index.html&quot; class=&quot;nav-logo&quot;&gt;&lt;span&gt;trixon&lt;/span&gt;.dev&lt;/a&gt;
+      &lt;ul class=&quot;nav-links&quot; id=&quot;navLinks&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;hamburger&quot; id=&quot;hamburger&quot; aria-label=&quot;Toggle menu&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;header class=&quot;page-hero&quot;&gt;
+    &lt;h1&gt;About Me&lt;/h1&gt;
+    &lt;p&gt;My journey, aspirations, and the skills I&#039;m building as a student and developer.&lt;/p&gt;
+    &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;education&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Education&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Academic Background&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card&quot; style=&quot;max-width:750px;margin:0 auto;&quot;&gt;
+      &lt;h3 style=&quot;margin-bottom:1rem;font-size:1rem;&quot;&gt;Academic Journey&lt;/h3&gt;
+      &lt;div class=&quot;table-container&quot;&gt;
+        &lt;table class=&quot;info-table&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;&lt;th&gt;Institution&lt;/th&gt;&lt;th&gt;Programme&lt;/th&gt;&lt;th&gt;Period&lt;/th&gt;&lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;MIVA Open University&lt;/td&gt;
+              &lt;td&gt;B.Sc. Computer Science&lt;/td&gt;
+              &lt;td&gt;Jan 2026 &amp;ndash; Aug 2028&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;Saylor University&lt;/td&gt;
+              &lt;td&gt;B.Tech. Computer Systems Networking &amp;amp; Telecommunications&lt;/td&gt;
+              &lt;td&gt;Feb 2026 &amp;ndash; Dec 2026&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;p style=&quot;color:var(--text-2);margin-top:0.75rem;font-size:0.88rem;&quot;&gt;
+        Currently pursuing dual degrees, focusing on full-stack development, software engineering, 
+        computer networking, and network engineering.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;career&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Goals&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Career Aspirations&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;max-width:750px;margin:0 auto;&quot;&gt;
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h3 style=&quot;margin-bottom:0.6rem;font-size:0.95rem;&quot;&gt;Short-Term&lt;/h3&gt;
+        &lt;ul style=&quot;color:var(--text-2);font-size:0.88rem;&quot;&gt;
+          &lt;li style=&quot;margin-bottom:0.4rem;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Master full-stack web development&lt;/li&gt;
+          &lt;li style=&quot;margin-bottom:0.4rem;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Build production-grade projects&lt;/li&gt;
+          &lt;li style=&quot;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Contribute to open-source&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h3 style=&quot;margin-bottom:0.6rem;font-size:0.95rem;&quot;&gt;Long-Term&lt;/h3&gt;
+        &lt;ul style=&quot;color:var(--text-2);font-size:0.88rem;&quot;&gt;
+          &lt;li style=&quot;margin-bottom:0.4rem;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Become a senior full-stack engineer&lt;/li&gt;
+          &lt;li style=&quot;margin-bottom:0.4rem;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Work at a top-tier tech company&lt;/li&gt;
+          &lt;li style=&quot;padding-left:1rem;position:relative;&quot;&gt;
+            &lt;span style=&quot;position:absolute;left:0;color:var(--primary);&quot;&gt;&amp;#8250;&lt;/span&gt;Build impactful tech solutions in Africa&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;skills&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Expertise&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Technical Skills&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;skills-grid&quot; style=&quot;max-width:750px;margin:0 auto;&quot;&gt;
+      &lt;div class=&quot;skill-card&quot;&gt;
+        &lt;h3&gt;Languages &amp;amp; Frameworks&lt;/h3&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;JavaScript / TypeScript&lt;/span&gt;&lt;span&gt;75%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;75&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Python&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;70&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;C++&lt;/span&gt;&lt;span&gt;55%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;55&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;SQL&lt;/span&gt;&lt;span&gt;65%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;65&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;skill-card&quot;&gt;
+        &lt;h3&gt;Tools &amp;amp; Platforms&lt;/h3&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;React / Next.js&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;70&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Node.js&lt;/span&gt;&lt;span&gt;72%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;72&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;Flutter / React Native&lt;/span&gt;&lt;span&gt;62%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;62&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;
+        &lt;div class=&quot;skill-name&quot;&gt;&lt;span&gt;MongoDB / Database Admin&lt;/span&gt;&lt;span&gt;68%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;skill-bar-bg&quot;&gt;&lt;div class=&quot;skill-bar&quot; data-width=&quot;68&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;hobbies&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Beyond Code&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Hobbies &amp;amp; Interests&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:750px;margin:0 auto;&quot;&gt;
+      &lt;div class=&quot;skill-card&quot; style=&quot;text-align:center;padding:1.5rem;&quot;&gt;
+        &lt;div style=&quot;font-size:2rem;margin-bottom:0.5rem;&quot;&gt;&amp;#128214;&lt;/div&gt;
+        &lt;h3 style=&quot;font-size:0.9rem;justify-content:center;&quot;&gt;Reading&lt;/h3&gt;
+        &lt;p style=&quot;color:var(--text-3);font-size:0.82rem;margin-top:0.3rem;&quot;&gt;Tech blogs &amp;amp; documentation&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;skill-card&quot; style=&quot;text-align:center;padding:1.5rem;&quot;&gt;
+        &lt;div style=&quot;font-size:2rem;margin-bottom:0.5rem;&quot;&gt;&amp;#127918;&lt;/div&gt;
+        &lt;h3 style=&quot;font-size:0.9rem;justify-content:center;&quot;&gt;Gaming&lt;/h3&gt;
+        &lt;p style=&quot;color:var(--text-3);font-size:0.82rem;margin-top:0.3rem;&quot;&gt;Strategy &amp;amp; puzzle games&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;skill-card&quot; style=&quot;text-align:center;padding:1.5rem;&quot;&gt;
+        &lt;div style=&quot;font-size:2rem;margin-bottom:0.5rem;&quot;&gt;&amp;#127911;&lt;/div&gt;
+        &lt;h3 style=&quot;font-size:0.9rem;justify-content:center;&quot;&gt;Music&lt;/h3&gt;
+        &lt;p style=&quot;color:var(--text-3);font-size:0.82rem;margin-top:0.3rem;&quot;&gt;Afrobeats &amp;amp; lo-fi&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-content&quot;&gt;
+      &lt;p class=&quot;footer-text&quot;&gt;&amp;copy; 2026 Prosper Nnodim. All rights reserved.&lt;/p&gt;
+      &lt;div class=&quot;footer-links&quot;&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 3: projects.html -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">3</div>
+                <div class="question-title">projects.html</div>
+            </div>
+            <p class="question-description">
+                Projects Portfolio exhibiting three sample projects with descriptions and layout optimizations.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">projects.html</span>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Prosper Nnodim&#039;s project portfolio - web apps, tools, and creative coding experiments.&quot;&gt;
+  &lt;title&gt;Prosper Nnodim | Projects&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class=&quot;navbar&quot; id=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;nav-container&quot;&gt;
+      &lt;a href=&quot;index.html&quot; class=&quot;nav-logo&quot;&gt;&lt;span&gt;trixon&lt;/span&gt;.dev&lt;/a&gt;
+      &lt;ul class=&quot;nav-links&quot; id=&quot;navLinks&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;projects.html&quot; class=&quot;active&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;hamburger&quot; id=&quot;hamburger&quot; aria-label=&quot;Toggle menu&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;header class=&quot;page-hero&quot;&gt;
+    &lt;h1&gt;Projects&lt;/h1&gt;
+    &lt;p&gt;A collection of things I&#039;ve built &amp;mdash; from web apps to creative experiments.&lt;/p&gt;
+    &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;projectsList&quot;&gt;
+    &lt;div class=&quot;projects-grid&quot;&gt;
+      &lt;article class=&quot;project-card&quot;&gt;
+        &lt;div class=&quot;project-image&quot;&gt;
+          &lt;img src=&quot;images/project1.png&quot; alt=&quot;ShopEase Dashboard screenshot&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;project-info&quot;&gt;
+          &lt;h3&gt;ShopEase Dashboard&lt;/h3&gt;
+          &lt;p&gt;A responsive e-commerce dashboard with product management, sales analytics, and inventory tracking built with vanilla web technologies.&lt;/p&gt;
+          &lt;div class=&quot;project-tags&quot;&gt;
+            &lt;span class=&quot;tag&quot;&gt;HTML&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;CSS&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;JavaScript&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;project-links&quot;&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Live Demo &amp;rarr;&lt;/a&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Source Code&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;project-card&quot;&gt;
+        &lt;div class=&quot;project-image&quot;&gt;
+          &lt;img src=&quot;images/project2.png&quot; alt=&quot;WeatherNow App screenshot&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;project-info&quot;&gt;
+          &lt;h3&gt;WeatherNow App&lt;/h3&gt;
+          &lt;p&gt;A weather forecast application displaying current conditions, temperature trends, and a 5-day outlook with dynamic icons and data visualization.&lt;/p&gt;
+          &lt;div class=&quot;project-tags&quot;&gt;
+            &lt;span class=&quot;tag&quot;&gt;HTML&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;CSS&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;JavaScript&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;API&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;project-links&quot;&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Live Demo &amp;rarr;&lt;/a&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Source Code&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;project-card&quot;&gt;
+        &lt;div class=&quot;project-image&quot;&gt;
+          &lt;img src=&quot;images/project3.png&quot; alt=&quot;TaskFlow App screenshot&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;project-info&quot;&gt;
+          &lt;h3&gt;TaskFlow Productivity&lt;/h3&gt;
+          &lt;p&gt;An interactive task management app with priority categorization, progress tracking, and localStorage persistence for offline use.&lt;/p&gt;
+          &lt;div class=&quot;project-tags&quot;&gt;
+            &lt;span class=&quot;tag&quot;&gt;HTML&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;CSS&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;JavaScript&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;LocalStorage&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;project-links&quot;&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Live Demo &amp;rarr;&lt;/a&gt;
+            &lt;a href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Source Code&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;projectSummary&quot;&gt;
+    &lt;div class=&quot;section-header&quot;&gt;
+      &lt;p class=&quot;section-label&quot;&gt;Overview&lt;/p&gt;
+      &lt;h2 class=&quot;section-title&quot;&gt;Summary&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;table-container&quot; style=&quot;max-width:700px;margin:0 auto;&quot;&gt;
+      &lt;table class=&quot;info-table&quot;&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Project&lt;/th&gt;&lt;th&gt;Stack&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;ShopEase Dashboard&lt;/td&gt;&lt;td&gt;HTML, CSS, JS&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;tag&quot; style=&quot;background:rgba(62,207,142,0.1);color:var(--success);&quot;&gt;Done&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;WeatherNow App&lt;/td&gt;&lt;td&gt;HTML, CSS, JS, API&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;tag&quot; style=&quot;background:rgba(62,207,142,0.1);color:var(--success);&quot;&gt;Done&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;TaskFlow App&lt;/td&gt;&lt;td&gt;HTML, CSS, JS&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;tag&quot; style=&quot;background:rgba(245,166,35,0.1);color:var(--warning);&quot;&gt;In Progress&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-content&quot;&gt;
+      &lt;p class=&quot;footer-text&quot;&gt;&amp;copy; 2026 Prosper Nnodim. All rights reserved.&lt;/p&gt;
+      &lt;div class=&quot;footer-links&quot;&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 4: planner.html -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">4</div>
+                <div class="question-title">planner.html</div>
+            </div>
+            <p class="question-description">
+                Academic Planner dashboard with input group, interactive stats, filtering pills, task list container, and audio Focus Soundtrack player.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">planner.html</span>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Interactive academic planner - add, complete, and delete tasks to stay organized.&quot;&gt;
+  &lt;title&gt;Prosper Nnodim | Academic Planner&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class=&quot;navbar&quot; id=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;nav-container&quot;&gt;
+      &lt;a href=&quot;index.html&quot; class=&quot;nav-logo&quot;&gt;&lt;span&gt;trixon&lt;/span&gt;.dev&lt;/a&gt;
+      &lt;ul class=&quot;nav-links&quot; id=&quot;navLinks&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;planner.html&quot; class=&quot;active&quot;&gt;Planner&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;hamburger&quot; id=&quot;hamburger&quot; aria-label=&quot;Toggle menu&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;header class=&quot;page-hero&quot;&gt;
+    &lt;h1&gt;Academic Planner&lt;/h1&gt;
+    &lt;p&gt;Stay organized. Add, track, and manage your academic tasks.&lt;/p&gt;
+    &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section class=&quot;section&quot; id=&quot;plannerSection&quot;&gt;
+    &lt;div class=&quot;planner-container&quot;&gt;
+      &lt;div class=&quot;task-input-group&quot; id=&quot;taskInputGroup&quot;&gt;
+        &lt;input type=&quot;text&quot; id=&quot;taskInput&quot; placeholder=&quot;What needs to be done?&quot; aria-label=&quot;Task description&quot;&gt;
+        &lt;select id=&quot;taskPriority&quot; aria-label=&quot;Priority&quot;&gt;
+          &lt;option value=&quot;low&quot;&gt;Low&lt;/option&gt;
+          &lt;option value=&quot;medium&quot; selected&gt;Medium&lt;/option&gt;
+          &lt;option value=&quot;high&quot;&gt;High&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button class=&quot;btn btn-primary&quot; id=&quot;addTaskBtn&quot; type=&quot;button&quot;&gt;Add Task&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;task-stats&quot; id=&quot;taskStats&quot;&gt;
+        &lt;div class=&quot;stat-card&quot;&gt;
+          &lt;div class=&quot;stat-number&quot; id=&quot;totalTasks&quot;&gt;0&lt;/div&gt;
+          &lt;div class=&quot;stat-label&quot;&gt;Total&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stat-card&quot;&gt;
+          &lt;div class=&quot;stat-number&quot; id=&quot;completedTasks&quot;&gt;0&lt;/div&gt;
+          &lt;div class=&quot;stat-label&quot;&gt;Done&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;stat-card&quot;&gt;
+          &lt;div class=&quot;stat-number&quot; id=&quot;pendingTasks&quot;&gt;0&lt;/div&gt;
+          &lt;div class=&quot;stat-label&quot;&gt;Pending&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;task-filters&quot; id=&quot;taskFilters&quot;&gt;
+        &lt;button class=&quot;filter-btn active&quot; data-filter=&quot;all&quot;&gt;All&lt;/button&gt;
+        &lt;button class=&quot;filter-btn&quot; data-filter=&quot;pending&quot;&gt;Pending&lt;/button&gt;
+        &lt;button class=&quot;filter-btn&quot; data-filter=&quot;completed&quot;&gt;Completed&lt;/button&gt;
+        &lt;button class=&quot;filter-btn&quot; data-filter=&quot;high&quot;&gt;High Priority&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;task-list&quot; id=&quot;taskList&quot;&gt;
+        &lt;div class=&quot;empty-state&quot; id=&quot;emptyState&quot;&gt;
+          &lt;div class=&quot;empty-icon&quot;&gt;&amp;#128203;&lt;/div&gt;
+          &lt;p&gt;No tasks yet. Add your first task above.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card&quot; style=&quot;margin-top:2rem;text-align:center;&quot;&gt;
+        &lt;h3 style=&quot;font-size:0.9rem;margin-bottom:0.75rem;justify-content:center;&quot;&gt;Focus Soundtrack&lt;/h3&gt;
+        &lt;audio controls style=&quot;width:100%;max-width:320px;margin:0 auto;filter:invert(1) hue-rotate(180deg);&quot;&gt;
+          &lt;source src=&quot;https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+          Your browser does not support the audio element.
+        &lt;/audio&gt;
+        &lt;p style=&quot;color:var(--text-3);font-size:0.75rem;margin-top:0.5rem;&quot;&gt;Ambient track to help you focus while working.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-content&quot;&gt;
+      &lt;p class=&quot;footer-text&quot;&gt;&amp;copy; 2026 Prosper Nnodim. All rights reserved.&lt;/p&gt;
+      &lt;div class=&quot;footer-links&quot;&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 5: contact.html -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">5</div>
+                <div class="question-title">contact.html</div>
+            </div>
+            <p class="question-description">
+                Contact page with information items, socials, and contact form.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">contact.html</span>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Contact Prosper Nnodim - send a message via the contact form.&quot;&gt;
+  &lt;title&gt;Prosper Nnodim | Contact&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class=&quot;navbar&quot; id=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;nav-container&quot;&gt;
+      &lt;a href=&quot;index.html&quot; class=&quot;nav-logo&quot;&gt;&lt;span&gt;trixon&lt;/span&gt;.dev&lt;/a&gt;
+      &lt;ul class=&quot;nav-links&quot; id=&quot;navLinks&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot; class=&quot;active&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button class=&quot;hamburger&quot; id=&quot;hamburger&quot; aria-label=&quot;Toggle menu&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;header class=&quot;page-hero&quot;&gt;
+    &lt;h1&gt;Contact&lt;/h1&gt;
+    &lt;p&gt;Have a question or want to collaborate? Reach out.&lt;/p&gt;
+    &lt;div class=&quot;section-divider&quot;&gt;&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;section class=&quot;section fade-in&quot; id=&quot;contactSection&quot;&gt;
+    &lt;div class=&quot;contact-grid&quot;&gt;
+
+      &lt;div class=&quot;contact-info-card&quot;&gt;
+        &lt;h3&gt;Get In Touch&lt;/h3&gt;
+
+        &lt;div class=&quot;info-item&quot;&gt;
+          &lt;div class=&quot;info-icon&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z&quot;/&gt;&lt;circle cx=&quot;12&quot; cy=&quot;10&quot; r=&quot;3&quot;/&gt;&lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;strong&gt;Location&lt;/strong&gt;
+            &lt;p&gt;Lagos, Nigeria&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;info-item&quot;&gt;
+          &lt;div class=&quot;info-icon&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;2&quot; y=&quot;4&quot; width=&quot;20&quot; height=&quot;16&quot; rx=&quot;2&quot;/&gt;&lt;polyline points=&quot;22,7 12,13 2,7&quot;/&gt;&lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;strong&gt;Email&lt;/strong&gt;
+            &lt;p&gt;realtrixon@gmail.com&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;info-item&quot;&gt;
+          &lt;div class=&quot;info-icon&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z&quot;/&gt;&lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;strong&gt;Phone&lt;/strong&gt;
+            &lt;p&gt;+234 907 031 4458&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;info-item&quot;&gt;
+          &lt;div class=&quot;info-icon&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z&quot;/&gt;&lt;polyline points=&quot;22,6 12,13 2,6&quot;/&gt;&lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;strong&gt;University&lt;/strong&gt;
+            &lt;p&gt;MIVA Open University&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;h3 style=&quot;margin-top:1.25rem;margin-bottom:0.75rem;&quot;&gt;Links&lt;/h3&gt;
+        &lt;div class=&quot;social-list&quot;&gt;
+          &lt;a href=&quot;https://github.com/trixon-llc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;social-link&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot; stroke=&quot;none&quot;&gt;&lt;path d=&quot;M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z&quot;/&gt;&lt;/svg&gt;
+            GitHub
+          &lt;/a&gt;
+          &lt;a href=&quot;https://www.linkedin.com/in/trixon&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;social-link&quot;&gt;
+            &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot; stroke=&quot;none&quot;&gt;&lt;path d=&quot;M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z&quot;/&gt;&lt;/svg&gt;
+            LinkedIn
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;form class=&quot;contact-form&quot; id=&quot;contactForm&quot; novalidate&gt;
+        &lt;h3 style=&quot;margin-bottom:1.25rem;&quot;&gt;Send a Message&lt;/h3&gt;
+        &lt;div class=&quot;form-group&quot; id=&quot;nameGroup&quot;&gt;
+          &lt;label for=&quot;contactName&quot;&gt;Full Name&lt;/label&gt;
+          &lt;input type=&quot;text&quot; id=&quot;contactName&quot; placeholder=&quot;Your full name&quot; required&gt;
+          &lt;p class=&quot;error-msg&quot; id=&quot;nameError&quot;&gt;Please enter your name.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot; id=&quot;emailGroup&quot;&gt;
+          &lt;label for=&quot;contactEmail&quot;&gt;Email Address&lt;/label&gt;
+          &lt;input type=&quot;email&quot; id=&quot;contactEmail&quot; placeholder=&quot;you@example.com&quot; required&gt;
+          &lt;p class=&quot;error-msg&quot; id=&quot;emailError&quot;&gt;Please enter a valid email address.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot; id=&quot;phoneGroup&quot;&gt;
+          &lt;label for=&quot;contactPhone&quot;&gt;Phone Number&lt;/label&gt;
+          &lt;input type=&quot;tel&quot; id=&quot;contactPhone&quot; placeholder=&quot;Phone number (digits only)&quot; required&gt;
+          &lt;p class=&quot;error-msg&quot; id=&quot;phoneError&quot;&gt;Phone number must contain only digits.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot; id=&quot;messageGroup&quot;&gt;
+          &lt;label for=&quot;contactMessage&quot;&gt;Message&lt;/label&gt;
+          &lt;textarea id=&quot;contactMessage&quot; placeholder=&quot;Your message...&quot; rows=&quot;5&quot; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;error-msg&quot; id=&quot;messageError&quot;&gt;Please enter your message.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot; id=&quot;submitBtn&quot; style=&quot;width:100%;justify-content:center;&quot;&gt;Send Message&lt;/button&gt;
+        &lt;div class=&quot;form-success&quot; id=&quot;formSuccess&quot;&gt;Message sent successfully. I&#039;ll get back to you soon.&lt;/div&gt;
+      &lt;/form&gt;
+
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-content&quot;&gt;
+      &lt;p class=&quot;footer-text&quot;&gt;&amp;copy; 2026 Prosper Nnodim. All rights reserved.&lt;/p&gt;
+      &lt;div class=&quot;footer-links&quot;&gt;
+        &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;projects.html&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;planner.html&quot;&gt;Planner&lt;/a&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 6: style.css -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">6</div>
+                <div class="question-title">style.css</div>
+            </div>
+            <p class="question-description">
+                External CSS stylesheet containing Matte Black design system variables, Vercel-style component styles, and full media queries.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">style.css</span>
+                </div>
+                <pre><code>@import url(&#039;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap&#039;);
+
+:root {
+  --primary: #3ecf8e;
+  --primary-dim: rgba(62,207,142,0.12);
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-elevated: #171717;
+  --border: #1e1e1e;
+  --border-hover: #333;
+  --text-1: #ededed;
+  --text-2: #888;
+  --text-3: #555;
+  --danger: #f75f5f;
+  --success: #3ecf8e;
+  --warning: #f5a623;
+  --font: &#039;Inter&#039;, -apple-system, sans-serif;
+  --radius: 8px;
+  --max-w: 1060px;
+  --transition: all 0.2s ease;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--text-2);line-height:1.6;overflow-x:hidden}
+a{color:var(--primary);text-decoration:none;transition:var(--transition)}
+a:hover{opacity:0.8}
+img{max-width:100%;height:auto;display:block}
+ul,ol{list-style:none}
+h1,h2,h3,h4{color:var(--text-1);font-weight:600}
+
+/* Nav */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,10,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem}
+.nav-container{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:56px}
+.nav-logo{font-size:1.1rem;font-weight:700;color:var(--text-1);letter-spacing:-0.3px}
+.nav-logo span{color:var(--primary)}
+.nav-links{display:flex;gap:1.8rem;align-items:center}
+.nav-links a{color:var(--text-2);font-size:0.85rem;font-weight:500;padding:0.4rem 0}
+.nav-links a:hover,.nav-links a.active{color:var(--text-1);opacity:1}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:20px;height:2px;background:var(--text-2);transition:var(--transition)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 1.5rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:&#039;&#039;;position:absolute;top:0;left:0;width:100%;height:100%;background:url(&#039;images/hero-banner.png&#039;) center/cover no-repeat;opacity:0.15;z-index:0;pointer-events:none}
+.hero-content{max-width:var(--max-w);width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-text{animation:fadeUp .6s ease forwards}
+.hero-greeting{color:var(--primary);font-size:0.85rem;font-weight:500;margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase}
+.hero-name{font-size:3rem;font-weight:800;color:var(--text-1);margin-bottom:0.4rem;line-height:1.1;letter-spacing:-1px}
+.hero-title{font-size:1.5rem;color:var(--text-2);font-weight:500;margin-bottom:1.2rem}
+.hero-bio{color:var(--text-2);font-size:0.95rem;max-width:460px;margin-bottom:1.8rem}
+.hero-buttons{display:flex;gap:0.75rem;flex-wrap:wrap}
+.hero-image{display:flex;justify-content:center;align-items:center;animation:fadeUp .6s .15s ease forwards;opacity:0}
+.hero-image img{width:280px;height:280px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--border);transition:var(--transition)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.6rem 1.4rem;border-radius:6px;font-family:var(--font);font-size:0.85rem;font-weight:500;cursor:pointer;transition:var(--transition);border:1px solid transparent}
+.btn-primary{background:var(--primary);color:#000;border-color:var(--primary)}
+.btn-primary:hover{opacity:0.85}
+.btn-outline{background:transparent;color:var(--text-1);border-color:var(--border)}
+.btn-outline:hover{border-color:var(--border-hover)}
+.btn-danger{background:transparent;color:var(--danger);border:1px solid rgba(247,95,95,0.3);padding:0.35rem 0.8rem;font-size:0.8rem}
+.btn-danger:hover{background:rgba(247,95,95,0.08)}
+.btn-success{background:var(--primary);color:#000;border-color:var(--primary);padding:0.35rem 0.8rem;font-size:0.8rem}
+.btn-success:hover{opacity:0.85}
+
+/* Sections */
+.section{padding:4rem 1.5rem;max-width:var(--max-w);margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-label{color:var(--primary);font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.4rem}
+.section-title{font-size:2rem;margin-bottom:0.5rem;letter-spacing:-0.5px}
+.section-subtitle{color:var(--text-2);font-size:0.95rem;max-width:500px;margin:0 auto}
+.section-divider{width:40px;height:2px;background:var(--primary);margin:1rem auto 0;border-radius:1px}
+
+/* Page Hero */
+.page-hero{padding:100px 1.5rem 2.5rem;text-align:center}
+.page-hero h1{font-size:2.2rem;margin-bottom:0.5rem;letter-spacing:-0.5px}
+.page-hero p{color:var(--text-2);font-size:0.95rem;max-width:480px;margin:0 auto}
+
+/* Cards */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:var(--transition)}
+.card:hover{border-color:var(--border-hover)}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:var(--transition)}
+.skill-card:hover{border-color:var(--border-hover)}
+.skill-card h3{font-size:0.95rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+.skill-bar-bg{background:var(--border);border-radius:20px;height:4px;overflow:hidden;margin-top:0.35rem}
+.skill-bar{height:100%;background:var(--primary);border-radius:20px;width:0;transition:width 1.2s ease}
+.skill-name{display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-2);margin-bottom:0.2rem}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+.project-card:hover{border-color:var(--border-hover)}
+.project-image{width:100%;aspect-ratio:16/9;overflow:hidden}
+.project-image img{width:100%;height:100%;object-fit:cover}
+.project-info{padding:1.25rem}
+.project-info h3{font-size:1.1rem;margin-bottom:0.5rem}
+.project-info p{color:var(--text-2);font-size:0.88rem;margin-bottom:0.75rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.tag{background:var(--primary-dim);color:var(--primary);padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:500}
+.project-links{display:flex;gap:1rem}
+.project-links a{color:var(--text-2);font-size:0.85rem}
+.project-links a:hover{color:var(--text-1)}
+
+/* Planner */
+.planner-container{max-width:660px;margin:0 auto}
+.task-input-group{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.task-input-group input,.task-input-group select{flex:1;min-width:160px;padding:0.65rem 1rem;border:1px solid var(--border);border-radius:6px;background:var(--bg-card);color:var(--text-1);font-family:var(--font);font-size:0.88rem;transition:var(--transition)}
+.task-input-group input:focus,.task-input-group select:focus{outline:none;border-color:var(--primary)}
+.task-input-group input::placeholder{color:var(--text-3)}
+.task-stats{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.stat-card{flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center}
+.stat-card .stat-number{font-size:1.75rem;font-weight:700;color:var(--primary)}
+.stat-card .stat-label{font-size:0.78rem;color:var(--text-2)}
+.task-filters{display:flex;gap:0.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.filter-btn{padding:0.45rem 1.1rem;border:1px solid #333;border-radius:20px;background:transparent;color:var(--text-2);font-family:var(--font);font-size:0.8rem;cursor:pointer;transition:var(--transition)}
+.filter-btn:hover{color:var(--text-1);border-color:var(--text-2)}
+.filter-btn.active{background:var(--primary-dim);color:var(--primary);border-color:var(--primary)}
+.task-list{display:flex;flex-direction:column;gap:0.5rem}
+.task-item{display:flex;align-items:center;gap:0.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:0.8rem 1rem;transition:var(--transition);animation:slideIn .25s ease}
+.task-item.completed .task-text{text-decoration:line-through;opacity:0.4}
+.task-checkbox{width:20px;height:20px;border:1.5px solid var(--border-hover);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--transition)}
+.task-checkbox:hover{border-color:var(--primary)}
+.task-item.completed .task-checkbox{background:var(--primary);border-color:var(--primary)}
+.task-item.completed .task-checkbox::after{content:&#039;✓&#039;;color:#000;font-size:0.7rem;font-weight:700}
+.task-text{flex:1;font-size:0.88rem;color:var(--text-1)}
+.task-priority{padding:0.15rem 0.5rem;border-radius:4px;font-size:0.7rem;font-weight:600}
+.priority-high{background:rgba(247,95,95,0.1);color:var(--danger)}
+.priority-medium{background:rgba(245,166,35,0.1);color:var(--warning)}
+.priority-low{background:var(--primary-dim);color:var(--primary)}
+.task-delete{background:none;border:none;color:var(--text-3);cursor:pointer;font-size:1rem;padding:0.2rem;transition:var(--transition);font-family:var(--font)}
+.task-delete:hover{color:var(--danger)}
+.empty-state{text-align:center;padding:2.5rem;color:var(--text-3)}
+.empty-state .empty-icon{font-size:2.5rem;margin-bottom:0.75rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.contact-info-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.contact-info-card h3{font-size:1.1rem;margin-bottom:1.25rem}
+.info-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem}
+.info-icon{width:38px;height:38px;background:var(--primary-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:18px;height:18px;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.info-item p{color:var(--text-2);font-size:0.88rem}
+.info-item strong{color:var(--text-1);display:block;margin-bottom:0.1rem;font-size:0.85rem}
+.contact-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:0.82rem;font-weight:500;color:var(--text-1);margin-bottom:0.3rem}
+.form-group input,.form-group textarea{width:100%;padding:0.65rem 0.85rem;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text-1);font-family:var(--font);font-size:0.88rem;transition:var(--transition)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--primary)}
+.form-group .error-msg{color:var(--danger);font-size:0.75rem;margin-top:0.2rem;display:none}
+.form-group.error input,.form-group.error textarea{border-color:var(--danger)}
+.form-group.error .error-msg{display:block}
+.form-success{background:var(--primary-dim);border:1px solid var(--primary);border-radius:6px;padding:0.85rem;text-align:center;color:var(--primary);display:none;margin-top:0.75rem;font-size:0.88rem;animation:fadeUp .3s ease}
+
+/* Tables */
+.info-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.info-table th,.info-table td{padding:0.7rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+.info-table th{color:var(--text-2);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px}
+.info-table td{color:var(--text-2);font-size:0.88rem}
+
+/* Table Container for Mobile */
+.table-container{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* Footer */
+.footer{border-top:1px solid var(--border);padding:2rem 1.5rem;margin-top:3rem}
+.footer-content{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-text{color:var(--text-3);font-size:0.82rem}
+.footer-links{display:flex;gap:1.2rem}
+.footer-links a{color:var(--text-3);font-size:0.82rem}
+.footer-links a:hover{color:var(--text-2)}
+
+/* Social links */
+.social-list{display:flex;flex-direction:column;gap:0.5rem}
+.social-link{display:flex;align-items:center;gap:0.6rem;color:var(--text-2);font-size:0.88rem;transition:var(--transition)}
+.social-link:hover{color:var(--text-1)}
+.social-link svg{width:16px;height:16px;flex-shrink:0}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.fade-in{opacity:0;transform:translateY(15px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Video */
+.video-container{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--bg-card)}
+
+/* Responsive */
+@media(max-width:768px){
+.hamburger{display:flex}
+.nav-links{position:fixed;top:56px;right:-100%;width:65%;height:calc(100vh - 56px);background:var(--bg-card);flex-direction:column;padding:1.5rem;gap:1.2rem;transition:var(--transition);border-left:1px solid var(--border)}
+.nav-links.open{right:0}
+.hero-content{grid-template-columns:1fr;text-align:center;gap:2rem}
+.hero-image{grid-row:1}
+.hero-text{grid-row:2}
+.hero-name{font-size:2.2rem}
+.hero-title{font-size:1.2rem}
+.hero-bio{margin:0 auto 1.5rem}
+.hero-buttons{justify-content:center}
+.hero-image img{width:200px;height:200px}
+.section-title{font-size:1.6rem}
+.skills-grid{grid-template-columns:1fr}
+.projects-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.project-card{display:flex;flex-direction:column;height:100%}
+.project-info{display:flex;flex-direction:column;flex-grow:1}
+.project-links{margin-top:auto;padding-top:0.5rem}
+.project-links a{padding:0.4rem 0;display:inline-block}
+.contact-grid{grid-template-columns:1fr}
+.task-input-group{flex-direction:column}
+.task-stats{flex-direction:column}
+.footer-content{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+.hero-name{font-size:1.8rem}
+.page-hero h1{font-size:1.8rem}
+.section{padding:2.5rem 1rem}
+}
+</code></pre>
+            </div>
+        </div>
+  
+        <!-- FILE 7: script.js -->
+        <div class="question" style="page-break-before: always; padding-top: 28px;">
+            <div class="question-header">
+                <div class="question-number">7</div>
+                <div class="question-title">script.js</div>
+            </div>
+            <p class="question-description">
+                Main JavaScript logic file containing mobile hamburger navigation controls, fade-in animations, planner CRUD & localStorage state persistence, and contact form digit-validation.
+            </p>
+
+            <div class="code-block">
+                <div class="code-block-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">script.js</span>
+                </div>
+                <pre><code>/* ============================
+   script.js - Main JavaScript
+   Student Portfolio &amp; Academic Management
+   ============================ */
+
+// ============================
+// Navigation - Mobile Hamburger Menu
+// ============================
+document.addEventListener(&#039;DOMContentLoaded&#039;, function () {
+  const hamburger = document.getElementById(&#039;hamburger&#039;);
+  const navLinks = document.getElementById(&#039;navLinks&#039;);
+
+  if (hamburger &amp;&amp; navLinks) {
+    hamburger.addEventListener(&#039;click&#039;, function () {
+      navLinks.classList.toggle(&#039;open&#039;);
+      // Animate hamburger lines
+      const spans = hamburger.querySelectorAll(&#039;span&#039;);
+      hamburger.classList.toggle(&#039;active&#039;);
+      if (navLinks.classList.contains(&#039;open&#039;)) {
+        spans[0].style.transform = &#039;rotate(45deg) translate(5px, 5px)&#039;;
+        spans[1].style.opacity = &#039;0&#039;;
+        spans[2].style.transform = &#039;rotate(-45deg) translate(5px, -5px)&#039;;
+      } else {
+        spans[0].style.transform = &#039;none&#039;;
+        spans[1].style.opacity = &#039;1&#039;;
+        spans[2].style.transform = &#039;none&#039;;
+      }
+    });
+
+    // Close menu when clicking a link
+    const links = navLinks.querySelectorAll(&#039;a&#039;);
+    links.forEach(function (link) {
+      link.addEventListener(&#039;click&#039;, function () {
+        navLinks.classList.remove(&#039;open&#039;);
+        const spans = hamburger.querySelectorAll(&#039;span&#039;);
+        spans[0].style.transform = &#039;none&#039;;
+        spans[1].style.opacity = &#039;1&#039;;
+        spans[2].style.transform = &#039;none&#039;;
+      });
+    });
+  }
+
+  // ============================
+  // Scroll Animations (Fade-in)
+  // ============================
+  const fadeElements = document.querySelectorAll(&#039;.fade-in&#039;);
+
+  function checkFadeIn() {
+    fadeElements.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top &lt; window.innerHeight - 80) {
+        el.classList.add(&#039;visible&#039;);
+      }
+    });
+  }
+
+  window.addEventListener(&#039;scroll&#039;, checkFadeIn);
+  checkFadeIn(); // Run on load
+
+  // ============================
+  // Skill Bar Animations
+  // ============================
+  var skillBars = document.querySelectorAll(&#039;.skill-bar&#039;);
+
+  function animateSkillBars() {
+    skillBars.forEach(function (bar) {
+      var rect = bar.getBoundingClientRect();
+      if (rect.top &lt; window.innerHeight - 50) {
+        var width = bar.getAttribute(&#039;data-width&#039;);
+        bar.style.width = width + &#039;%&#039;;
+      }
+    });
+  }
+
+  window.addEventListener(&#039;scroll&#039;, animateSkillBars);
+  animateSkillBars(); // Run on load
+
+  // ============================
+  // Navbar Shadow on Scroll
+  // ============================
+  var navbar = document.getElementById(&#039;navbar&#039;);
+
+  window.addEventListener(&#039;scroll&#039;, function () {
+    if (window.scrollY &gt; 50) {
+      navbar.style.boxShadow = &#039;0 10px 30px -10px rgba(2,12,27,0.7)&#039;;
+    } else {
+      navbar.style.boxShadow = &#039;none&#039;;
+    }
+  });
+
+  // ============================
+  // Academic Planner - Task Management
+  // ============================
+  var addTaskBtn = document.getElementById(&#039;addTaskBtn&#039;);
+  var taskInput = document.getElementById(&#039;taskInput&#039;);
+  var taskPriority = document.getElementById(&#039;taskPriority&#039;);
+  var taskList = document.getElementById(&#039;taskList&#039;);
+  var emptyState = document.getElementById(&#039;emptyState&#039;);
+
+  // Array to store tasks
+  var tasks = [];
+
+  // Load tasks from localStorage
+  function loadTasks() {
+    var savedTasks = localStorage.getItem(&#039;academicTasks&#039;);
+    if (savedTasks) {
+      tasks = JSON.parse(savedTasks);
+    }
+  }
+
+  // Save tasks to localStorage
+  function saveTasks() {
+    localStorage.setItem(&#039;academicTasks&#039;, JSON.stringify(tasks));
+  }
+
+  // Update task statistics
+  function updateStats() {
+    var totalEl = document.getElementById(&#039;totalTasks&#039;);
+    var completedEl = document.getElementById(&#039;completedTasks&#039;);
+    var pendingEl = document.getElementById(&#039;pendingTasks&#039;);
+
+    if (totalEl &amp;&amp; completedEl &amp;&amp; pendingEl) {
+      var total = tasks.length;
+      var completed = 0;
+      for (var i = 0; i &lt; tasks.length; i++) {
+        if (tasks[i].completed) {
+          completed++;
+        }
+      }
+      var pending = total - completed;
+
+      totalEl.textContent = total;
+      completedEl.textContent = completed;
+      pendingEl.textContent = pending;
+    }
+  }
+
+  // Render tasks to the DOM
+  function renderTasks(filter) {
+    if (!taskList) return;
+
+    // Clear current task items (keep empty state)
+    var currentItems = taskList.querySelectorAll(&#039;.task-item&#039;);
+    for (var i = 0; i &lt; currentItems.length; i++) {
+      currentItems[i].remove();
+    }
+
+    // Determine which tasks to show
+    var filteredTasks = [];
+    for (var j = 0; j &lt; tasks.length; j++) {
+      var task = tasks[j];
+      if (!filter || filter === &#039;all&#039;) {
+        filteredTasks.push(task);
+      } else if (filter === &#039;completed&#039; &amp;&amp; task.completed) {
+        filteredTasks.push(task);
+      } else if (filter === &#039;pending&#039; &amp;&amp; !task.completed) {
+        filteredTasks.push(task);
+      } else if (filter === &#039;high&#039; &amp;&amp; task.priority === &#039;high&#039;) {
+        filteredTasks.push(task);
+      }
+    }
+
+    // Show or hide empty state
+    if (emptyState) {
+      emptyState.style.display = filteredTasks.length === 0 ? &#039;block&#039; : &#039;none&#039;;
+    }
+
+    // Create task elements
+    for (var k = 0; k &lt; filteredTasks.length; k++) {
+      var t = filteredTasks[k];
+      var taskEl = createTaskElement(t);
+      taskList.appendChild(taskEl);
+    }
+
+    updateStats();
+  }
+
+  // Create a single task element
+  function createTaskElement(task) {
+    var div = document.createElement(&#039;div&#039;);
+    div.className = &#039;task-item&#039; + (task.completed ? &#039; completed&#039; : &#039;&#039;);
+    div.setAttribute(&#039;data-id&#039;, task.id);
+
+    // Checkbox
+    var checkbox = document.createElement(&#039;div&#039;);
+    checkbox.className = &#039;task-checkbox&#039;;
+    checkbox.addEventListener(&#039;click&#039;, function () {
+      toggleTask(task.id);
+    });
+
+    // Task text
+    var textSpan = document.createElement(&#039;span&#039;);
+    textSpan.className = &#039;task-text&#039;;
+    textSpan.textContent = task.text;
+
+    // Priority badge
+    var prioritySpan = document.createElement(&#039;span&#039;);
+    prioritySpan.className = &#039;task-priority priority-&#039; + task.priority;
+    prioritySpan.textContent = task.priority.charAt(0).toUpperCase() + task.priority.slice(1);
+
+    // Delete button
+    var deleteBtn = document.createElement(&#039;button&#039;);
+    deleteBtn.className = &#039;task-delete&#039;;
+    deleteBtn.textContent = &#039;\u2715&#039;;
+    deleteBtn.setAttribute(&#039;aria-label&#039;, &#039;Delete task&#039;);
+    deleteBtn.addEventListener(&#039;click&#039;, function () {
+      deleteTask(task.id);
+    });
+
+    div.appendChild(checkbox);
+    div.appendChild(textSpan);
+    div.appendChild(prioritySpan);
+    div.appendChild(deleteBtn);
+
+    return div;
+  }
+
+  // Add a new task
+  function addTask() {
+    if (!taskInput) return;
+
+    var text = taskInput.value.trim();
+    if (text === &#039;&#039;) {
+      taskInput.style.borderColor = &#039;#ef476f&#039;;
+      taskInput.focus();
+      setTimeout(function () {
+        taskInput.style.borderColor = &#039;&#039;;
+      }, 1500);
+      return;
+    }
+
+    var newTask = {
+      id: Date.now(),
+      text: text,
+      priority: taskPriority ? taskPriority.value : &#039;medium&#039;,
+      completed: false
+    };
+
+    tasks.push(newTask);
+    saveTasks();
+    taskInput.value = &#039;&#039;;
+    renderTasks(getCurrentFilter());
+  }
+
+  // Toggle task completion
+  function toggleTask(id) {
+    for (var i = 0; i &lt; tasks.length; i++) {
+      if (tasks[i].id === id) {
+        tasks[i].completed = !tasks[i].completed;
+        break;
+      }
+    }
+    saveTasks();
+    renderTasks(getCurrentFilter());
+  }
+
+  // Delete a task
+  function deleteTask(id) {
+    var newTasks = [];
+    for (var i = 0; i &lt; tasks.length; i++) {
+      if (tasks[i].id !== id) {
+        newTasks.push(tasks[i]);
+      }
+    }
+    tasks = newTasks;
+    saveTasks();
+    renderTasks(getCurrentFilter());
+  }
+
+  // Get current active filter
+  function getCurrentFilter() {
+    var activeBtn = document.querySelector(&#039;.filter-btn.active&#039;);
+    return activeBtn ? activeBtn.getAttribute(&#039;data-filter&#039;) : &#039;all&#039;;
+  }
+
+  // Event listeners for planner
+  if (addTaskBtn) {
+    addTaskBtn.addEventListener(&#039;click&#039;, addTask);
+  }
+
+  if (taskInput) {
+    taskInput.addEventListener(&#039;keypress&#039;, function (e) {
+      if (e.key === &#039;Enter&#039;) {
+        addTask();
+      }
+    });
+  }
+
+  // Filter buttons
+  var filterBtns = document.querySelectorAll(&#039;.filter-btn&#039;);
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener(&#039;click&#039;, function () {
+      // Remove active from all
+      filterBtns.forEach(function (b) {
+        b.classList.remove(&#039;active&#039;);
+      });
+      btn.classList.add(&#039;active&#039;);
+      renderTasks(btn.getAttribute(&#039;data-filter&#039;));
+    });
+  });
+
+  // Initialize planner
+  if (taskList) {
+    loadTasks();
+    renderTasks(&#039;all&#039;);
+  }
+
+  // ============================
+  // Contact Form Validation
+  // ============================
+  var contactForm = document.getElementById(&#039;contactForm&#039;);
+
+  if (contactForm) {
+    contactForm.addEventListener(&#039;submit&#039;, function (e) {
+      e.preventDefault();
+      var isValid = validateForm();
+      if (isValid) {
+        // Show success message
+        var successMsg = document.getElementById(&#039;formSuccess&#039;);
+        if (successMsg) {
+          successMsg.style.display = &#039;block&#039;;
+        }
+        contactForm.reset();
+        // Hide success after 5 seconds
+        setTimeout(function () {
+          if (successMsg) {
+            successMsg.style.display = &#039;none&#039;;
+          }
+        }, 5000);
+      }
+    });
+  }
+
+  // Form validation function
+  function validateForm() {
+    var valid = true;
+
+    // Name validation
+    var nameInput = document.getElementById(&#039;contactName&#039;);
+    var nameGroup = document.getElementById(&#039;nameGroup&#039;);
+    if (nameInput &amp;&amp; nameGroup) {
+      if (nameInput.value.trim() === &#039;&#039;) {
+        nameGroup.classList.add(&#039;error&#039;);
+        valid = false;
+      } else {
+        nameGroup.classList.remove(&#039;error&#039;);
+      }
+    }
+
+    // Email validation
+    var emailInput = document.getElementById(&#039;contactEmail&#039;);
+    var emailGroup = document.getElementById(&#039;emailGroup&#039;);
+    if (emailInput &amp;&amp; emailGroup) {
+      var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(emailInput.value.trim())) {
+        emailGroup.classList.add(&#039;error&#039;);
+        valid = false;
+      } else {
+        emailGroup.classList.remove(&#039;error&#039;);
+      }
+    }
+
+    // Phone validation - must contain only digits (optional leading + allowed)
+    var phoneInput = document.getElementById(&#039;contactPhone&#039;);
+    var phoneGroup = document.getElementById(&#039;phoneGroup&#039;);
+    if (phoneInput &amp;&amp; phoneGroup) {
+      var phoneValue = phoneInput.value.trim();
+      var digitsOnly = /^\+?\d+$/;
+      if (phoneValue === &#039;&#039; || !digitsOnly.test(phoneValue)) {
+        phoneGroup.classList.add(&#039;error&#039;);
+        valid = false;
+      } else {
+        phoneGroup.classList.remove(&#039;error&#039;);
+      }
+    }
+
+    // Message validation
+    var messageInput = document.getElementById(&#039;contactMessage&#039;);
+    var messageGroup = document.getElementById(&#039;messageGroup&#039;);
+    if (messageInput &amp;&amp; messageGroup) {
+      if (messageInput.value.trim() === &#039;&#039;) {
+        messageGroup.classList.add(&#039;error&#039;);
+        valid = false;
+      } else {
+        messageGroup.classList.remove(&#039;error&#039;);
+      }
+    }
+
+    return valid;
+  }
+
+  // Clear error on input
+  var formInputs = document.querySelectorAll(&#039;.form-group input, .form-group textarea&#039;);
+  formInputs.forEach(function (input) {
+    input.addEventListener(&#039;input&#039;, function () {
+      var group = input.closest(&#039;.form-group&#039;);
+      if (group) {
+        group.classList.remove(&#039;error&#039;);
+      }
+    });
+  });
+
+}); // end DOMContentLoaded
+</code></pre>
+            </div>
+        </div>
+  
+
+        <div class="footer">
+            CSC 106 &mdash; Introduction to Web Technologies &bull; Term Project Submission &bull; Miva Open University
+        </div>
+    </div>
+
+</body>
+</html>
