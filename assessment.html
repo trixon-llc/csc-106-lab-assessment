@@ -1,355 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSC 106 - Lab Assessment Submission</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSC 106 - Lab Assessment Submission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-            color: #1a1a2e;
-            background: #fff;
-            line-height: 1.6;
-            font-size: 13px;
-        }
+    body {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.6;
+      font-size: 13px;
+    }
 
-        /* ── Header Banner ── */
-        .header {
-            background: linear-gradient(135deg, #0f2b46 0%, #1a3a5c 60%, #10b981 100%);
-            color: white;
-            padding: 28px 40px;
-            position: relative;
-            overflow: hidden;
-        }
+    /* ── Header Banner ── */
+    .header {
+      background: linear-gradient(135deg, #0f2b46 0%, #1a3a5c 60%, #10b981 100%);
+      color: white;
+      padding: 28px 40px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 160px;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 50%, #10b981 50%);
-        }
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 160px;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 50%, #10b981 50%);
+    }
 
-        .header h1 {
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+    .header h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-        .header h2 {
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.85;
-            margin-top: 2px;
-        }
+    .header h2 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
 
-        .header .university {
-            position: absolute;
-            top: 50%;
-            right: 50px;
-            transform: translateY(-50%);
-            text-align: right;
-            z-index: 1;
-            font-family: 'Source Serif 4', Georgia, serif;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 3px;
-        }
+    .header .university {
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      text-align: right;
+      z-index: 1;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
 
-        .header .university span {
-            display: block;
-            font-size: 9px;
-            font-weight: 400;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
+    .header .university span {
+      display: block;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
 
-        /* ── Main Content ── */
-        .content {
-            padding: 28px 40px 20px;
-        }
+    /* ── Main Content ── */
+    .content {
+      padding: 28px 40px 20px;
+    }
 
-        /* ── Student Info Section ── */
-        .student-info {
-            border: 1px solid #d0d5dd;
-            border-radius: 4px;
-            padding: 16px 22px;
-            margin-bottom: 24px;
-        }
+    /* ── Student Info Section ── */
+    .student-info {
+      border: 1px solid #d0d5dd;
+      border-radius: 4px;
+      padding: 16px 22px;
+      margin-bottom: 24px;
+    }
 
-        .student-info h3 {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #0f2b46;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
-            border-bottom: 1.5px solid #0f2b46;
-            display: inline-block;
-        }
+    .student-info h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #0f2b46;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #0f2b46;
+      display: inline-block;
+    }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 36px;
-        }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 36px;
+    }
 
-        .info-item {
-            display: flex;
-            gap: 6px;
-        }
+    .info-item {
+      display: flex;
+      gap: 6px;
+    }
 
-        .info-label {
-            font-weight: 600;
-            font-size: 12px;
-            color: #555;
-            white-space: nowrap;
-        }
+    .info-label {
+      font-weight: 600;
+      font-size: 12px;
+      color: #555;
+      white-space: nowrap;
+    }
 
-        .info-value {
-            font-size: 12px;
-            color: #1a1a2e;
-            border-bottom: 1px dashed #bbb;
-            flex: 1;
-            padding-bottom: 1px;
-            outline: none;
-            min-width: 60px;
-        }
+    .info-value {
+      font-size: 12px;
+      color: #1a1a2e;
+      border-bottom: 1px dashed #bbb;
+      flex: 1;
+      padding-bottom: 1px;
+      outline: none;
+      min-width: 60px;
+    }
 
-        /* ── Question Sections ── */
-        .question {
-            margin-bottom: 24px;
-        }
+    /* ── Question Sections ── */
+    .question {
+      margin-bottom: 24px;
+    }
 
-        .question-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
+    .question-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
 
-        .question-number {
-            background: #0f2b46;
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
+    .question-number {
+      background: #0f2b46;
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
 
-        .question-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #0f2b46;
-        }
+    .question-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f2b46;
+    }
 
-        .question-description {
-            font-size: 12.5px;
-            color: #444;
-            margin-bottom: 10px;
-            padding-left: 36px;
-            font-style: italic;
-        }
+    .question-description {
+      font-size: 12.5px;
+      color: #444;
+      margin-bottom: 10px;
+      padding-left: 36px;
+      font-style: italic;
+    }
 
-        /* ── Code Block ── */
-        .code-block {
-            background: #0f0f15;
-            border-radius: 5px;
-            overflow: hidden;
-        }
+    /* ── Code Block ── */
+    .code-block {
+      background: #0f0f15;
+      border-radius: 5px;
+      overflow: hidden;
+    }
 
-        .code-block-header {
-            background: #1b1b24;
-            padding: 5px 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    .code-block-header {
+      background: #1b1b24;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .code-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
+    .code-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
 
-        .code-dot.red { background: #ff5f56; }
-        .code-dot.yellow { background: #ffbd2e; }
-        .code-dot.green { background: #27ca40; }
+    .code-dot.red {
+      background: #ff5f56;
+    }
 
-        .code-filename {
-            color: #999;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            margin-left: 6px;
-        }
+    .code-dot.yellow {
+      background: #ffbd2e;
+    }
 
-        .code-block pre {
-            padding: 12px 14px;
-            overflow-x: auto;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9.5px;
-            line-height: 1.5;
-            color: #e2e8f0;
-            white-space: pre;
-            margin: 0;
-        }
+    .code-dot.green {
+      background: #27ca40;
+    }
 
-        /* ── Explanation Section ── */
-        .explanation {
-            background: #f4f7fb;
-            border-left: 3px solid #0f2b46;
-            padding: 10px 14px;
-            border-radius: 0 4px 4px 0;
-            margin-top: 8px;
-        }
+    .code-filename {
+      color: #999;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      margin-left: 6px;
+    }
 
-        .explanation h4 {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #0f2b46;
-            margin-bottom: 4px;
-        }
+    .code-block pre {
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      white-space: pre;
+      margin: 0;
+    }
 
-        .explanation ul {
-            padding-left: 16px;
-            font-size: 11.5px;
-            color: #333;
-        }
+    /* ── Explanation Section ── */
+    .explanation {
+      background: #f4f7fb;
+      border-left: 3px solid #0f2b46;
+      padding: 10px 14px;
+      border-radius: 0 4px 4px 0;
+      margin-top: 8px;
+    }
 
-        .explanation li {
-            margin-bottom: 2px;
-        }
+    .explanation h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0f2b46;
+      margin-bottom: 4px;
+    }
 
-        /* ── Footer ── */
-        .footer {
-            text-align: center;
-            padding: 16px;
-            font-size: 10px;
-            color: #999;
-            border-top: 1px solid #eee;
-            margin-top: 12px;
-        }
+    .explanation ul {
+      padding-left: 16px;
+      font-size: 11.5px;
+      color: #333;
+    }
 
-        /* ── Print Styles ── */
-        @media print {
-            @page {
-                size: A4;
-                margin: 12mm 10mm;
-            }
+    .explanation li {
+      margin-bottom: 2px;
+    }
 
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 10px;
+      color: #999;
+      border-top: 1px solid #eee;
+      margin-top: 12px;
+    }
 
-            .header {
-                padding: 22px 30px;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+    /* ── Print Styles ── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 10mm;
+      }
 
-            .content {
-                padding: 20px 10px 10px;
-            }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
 
-            .code-block {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+      .header {
+        padding: 22px 30px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
 
-            .explanation {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-    </style>
+      .content {
+        padding: 20px 10px 10px;
+      }
+
+      .code-block {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .explanation {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- Header Banner -->
-    <div class="header">
-        <h1>Lab Assessment</h1>
-        <h2>CSC 106 &mdash; Introduction to Web Technologies</h2>
-        <div class="university">
-            MIVA
-            <span>Open University</span>
+  <!-- Header Banner -->
+  <div class="header">
+    <h1>Lab Assessment</h1>
+    <h2>CSC 106 &mdash; Introduction to Web Technologies</h2>
+    <div class="university">
+      MIVA
+      <span>Open University</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Student Information -->
+    <div class="student-info">
+      <h3>Student Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Full Name:</span>
+          <span class="info-value">Nnodim Prosper</span>
         </div>
+        <div class="info-item">
+          <span class="info-label">Matric No:</span>
+          <span class="info-value">2025/B/CSC/0577</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Email:</span>
+          <span class="info-value">p.nnodim8145@miva.edu.ng</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Department:</span>
+          <span class="info-value">Computer Science</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Live Link:</span>
+          <span class="info-value"><a href="https://trixon-llc.github.io/csc-106-lab-assessment"
+              target="_blank">trixon-llc.github.io/csc-106-lab-assessment</a></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">GitHub Repo:</span>
+          <span class="info-value"><a href="https://github.com/trixon-llc/csc-106-lab-assessment"
+              target="_blank">github.com/trixon-llc/csc-106-lab-assessment</a></span>
+        </div>
+      </div>
     </div>
 
-    <div class="content">
 
-        <!-- Student Information -->
-        <div class="student-info">
-            <h3>Student Information</h3>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Full Name:</span>
-                    <span class="info-value">Nnodim Prosper</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Matric No:</span>
-                    <span class="info-value">2025/B/CSC/0577</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Email:</span>
-                    <span class="info-value">realtrixon@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Department:</span>
-                    <span class="info-value">Computer Science</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Live Link:</span>
-                    <span class="info-value"><a href="https://trixon-llc.github.io/csc-106-lab-assessment" target="_blank">trixon-llc.github.io/csc-106-lab-assessment</a></span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">GitHub Repo:</span>
-                    <span class="info-value"><a href="https://github.com/trixon-llc/csc-106-lab-assessment" target="_blank">github.com/trixon-llc/csc-106-lab-assessment</a></span>
-                </div>
-            </div>
+    <!-- FILE 1: index.html -->
+    <div class="question">
+      <div class="question-header">
+        <div class="question-number">1</div>
+        <div class="question-title">index.html</div>
+      </div>
+      <p class="question-description">
+        Homepage showing profile introduction, photo, skills grid, and links.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">index.html</span>
         </div>
-
-        
-        <!-- FILE 1: index.html -->
-        <div class="question" >
-            <div class="question-header">
-                <div class="question-number">1</div>
-                <div class="question-title">index.html</div>
-            </div>
-            <p class="question-description">
-                Homepage showing profile introduction, photo, skills grid, and links.
-            </p>
-
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">index.html</span>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -464,27 +478,27 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 2: about.html -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">2</div>
-                <div class="question-title">about.html</div>
-            </div>
-            <p class="question-description">
-                About Page detailing academic history, career aspirations, technical skills, and hobbies.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">about.html</span>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
+    <!-- FILE 2: about.html -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">2</div>
+        <div class="question-title">about.html</div>
+      </div>
+      <p class="question-description">
+        About Page detailing academic history, career aspirations, technical skills, and hobbies.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">about.html</span>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -645,27 +659,27 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 3: projects.html -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">3</div>
-                <div class="question-title">projects.html</div>
-            </div>
-            <p class="question-description">
-                Projects Portfolio exhibiting three sample projects with descriptions and layout optimizations.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">projects.html</span>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
+    <!-- FILE 3: projects.html -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">3</div>
+        <div class="question-title">projects.html</div>
+      </div>
+      <p class="question-description">
+        Projects Portfolio exhibiting three sample projects with descriptions and layout optimizations.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">projects.html</span>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -777,27 +791,28 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 4: planner.html -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">4</div>
-                <div class="question-title">planner.html</div>
-            </div>
-            <p class="question-description">
-                Academic Planner dashboard with input group, interactive stats, filtering pills, task list container, and audio Focus Soundtrack player.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">planner.html</span>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
+    <!-- FILE 4: planner.html -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">4</div>
+        <div class="question-title">planner.html</div>
+      </div>
+      <p class="question-description">
+        Academic Planner dashboard with input group, interactive stats, filtering pills, task list container, and audio
+        Focus Soundtrack player.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">planner.html</span>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -887,27 +902,27 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 5: contact.html -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">5</div>
-                <div class="question-title">contact.html</div>
-            </div>
-            <p class="question-description">
-                Contact page with information items, socials, and contact form.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">contact.html</span>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
+    <!-- FILE 5: contact.html -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">5</div>
+        <div class="question-title">contact.html</div>
+      </div>
+      <p class="question-description">
+        Contact page with information items, socials, and contact form.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">contact.html</span>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -959,7 +974,7 @@
           &lt;/div&gt;
           &lt;div&gt;
             &lt;strong&gt;Email&lt;/strong&gt;
-            &lt;p&gt;realtrixon@gmail.com&lt;/p&gt;
+            &lt;p&gt;p.nnodim8145@miva.edu.ng&lt;/p&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 
@@ -1037,27 +1052,28 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 6: style.css -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">6</div>
-                <div class="question-title">style.css</div>
-            </div>
-            <p class="question-description">
-                External CSS stylesheet containing Matte Black design system variables, Vercel-style component styles, and full media queries.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">style.css</span>
-                </div>
-                <pre><code>@import url(&#039;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap&#039;);
+    <!-- FILE 6: style.css -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">6</div>
+        <div class="question-title">style.css</div>
+      </div>
+      <p class="question-description">
+        External CSS stylesheet containing Matte Black design system variables, Vercel-style component styles, and full
+        media queries.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">style.css</span>
+        </div>
+        <pre><code>@import url(&#039;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap&#039;);
 
 :root {
   --primary: #3ecf8e;
@@ -1278,27 +1294,28 @@ h1,h2,h3,h4{color:var(--text-1);font-weight:600}
 .section{padding:2.5rem 1rem}
 }
 </code></pre>
-            </div>
-        </div>
-  
-        <!-- FILE 7: script.js -->
-        <div class="question" style="page-break-before: always; padding-top: 28px;">
-            <div class="question-header">
-                <div class="question-number">7</div>
-                <div class="question-title">script.js</div>
-            </div>
-            <p class="question-description">
-                Main JavaScript logic file containing mobile hamburger navigation controls, fade-in animations, planner CRUD & localStorage state persistence, and contact form digit-validation.
-            </p>
+      </div>
+    </div>
 
-            <div class="code-block">
-                <div class="code-block-header">
-                    <div class="code-dot red"></div>
-                    <div class="code-dot yellow"></div>
-                    <div class="code-dot green"></div>
-                    <span class="code-filename">script.js</span>
-                </div>
-                <pre><code>/* ============================
+    <!-- FILE 7: script.js -->
+    <div class="question" style="page-break-before: always; padding-top: 28px;">
+      <div class="question-header">
+        <div class="question-number">7</div>
+        <div class="question-title">script.js</div>
+      </div>
+      <p class="question-description">
+        Main JavaScript logic file containing mobile hamburger navigation controls, fade-in animations, planner CRUD &
+        localStorage state persistence, and contact form digit-validation.
+      </p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+          <span class="code-filename">script.js</span>
+        </div>
+        <pre><code>/* ============================
    script.js - Main JavaScript
    Student Portfolio &amp; Academic Management
    ============================ */
@@ -1702,14 +1719,15 @@ document.addEventListener(&#039;DOMContentLoaded&#039;, function () {
 
 }); // end DOMContentLoaded
 </code></pre>
-            </div>
-        </div>
-  
-
-        <div class="footer">
-            CSC 106 &mdash; Introduction to Web Technologies &bull; Term Project Submission &bull; Miva Open University
-        </div>
+      </div>
     </div>
 
+
+    <div class="footer">
+      CSC 106 &mdash; Introduction to Web Technologies &bull; Term Project Submission &bull; Miva Open University
+    </div>
+  </div>
+
 </body>
+
 </html>
